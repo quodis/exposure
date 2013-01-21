@@ -90,27 +90,10 @@ textarea {
         max-width: 100%;
         max-height: 100%;
     }
-/*
-.frame[data-frame="1"] {
-    background-color: red;
-}
 
-.frame[data-frame="2"] {
-    background-color: yellow;
+.frame.loading {
+    opacity: 0.5;
 }
-
-.frame[data-frame="3"] {
-    background-color: pink;
-}
-
-.frame[data-frame="4"] {
-    background-color: blue;
-}
-
-.frame[data-frame="5"] {
-    background-color: gray;
-}
-*/
 
 #shuffle {
     width: 150px;

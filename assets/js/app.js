@@ -112,12 +112,15 @@ $(document).ready(function() {
 		image = new Image()
 		image.src = imageURL;
 
+		$frame.addClass('loading');
+
 		image.onload = function() {
 			$frame.css({
-				"background-image": "url()",
+				"background-image": "url("+ imageURL +")",
 				"background-color": 'transparent',
 				'opacity': '1'
-			});
+			})
+			.removeClass('loading');
 		};
 	};
 
