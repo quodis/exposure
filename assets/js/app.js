@@ -70,7 +70,7 @@ $(document).ready(function() {
 				top: newY,
 				width: newWidth,
 				height: newHeight,
-				opacity: 1
+				visibility: 'visible'
 			});
 		});
 	};
@@ -81,7 +81,7 @@ $(document).ready(function() {
 				$frame = $('[data-frame="' + frameIndex + '"]');
 
 			$frame.css({
-				opacity: 0
+				visibility: 'hidden'
 			});
 		});
 	};
@@ -117,8 +117,7 @@ $(document).ready(function() {
 		image.onload = function() {
 			$frame.css({
 				"background-image": "url("+ imageURL +")",
-				"background-color": 'transparent',
-				'opacity': '1'
+				"background-color": 'transparent'
 			})
 			.removeClass('loading');
 		};

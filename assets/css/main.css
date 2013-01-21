@@ -78,7 +78,7 @@ textarea {
     position: absolute;
     background-size: 100%;
     background-repeat: no-repeat;
-    opacity: 0.2;
+    opacity: 1;
     -webkit-transition: opacity .1s ease;
     -moz-transition: opacity .1s ease;
     -ms-transition: opacity .1s ease;
