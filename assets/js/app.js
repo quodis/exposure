@@ -89,6 +89,8 @@ $(document).ready(function() {
 	loadImageIntoFrame = function(imageIndex, frameIndex) {
 		var frames = APP.config.frames,
 			frame,
+			imageName,
+			imageURL,
 			image,
 			$frame;
 
@@ -100,17 +102,23 @@ $(document).ready(function() {
 		}
 
 		frame = frames[frameIndex];
-		image = frame.images[imageIndex];
+		imageName = frame.images[imageIndex];
+		imageURL = "/assets/img/content/" + imageName + ".png";
 
 		$frame = $('[data-frame="' + (frameIndex + 1) + '"]');
 
-		console.log('loading image:' + image + '.png into frame: ', $frame);
+		console.log('loading image:' + imageName + '.png into frame: ', $frame);
 
-		$frame.css({
-			"background-image": "url(/assets/img/content/" + image + ".png)",
-			"background-color": 'transparent',
-			'opacity': '1'
-		});
+		image = new Image()
+		image.src = imageURL;
+
+		image.onload = function() {
+			$frame.css({
+				"background-image": "url()",
+				"background-color": 'transparent',
+				'opacity': '1'
+			});
+		};
 	};
 
 	APP.shuffleImages = shuffleImages = function() {
