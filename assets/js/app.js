@@ -9,6 +9,10 @@ $(document).ready(function() {
 		loadImageIntoFrame,
 		loadImageByNameIntoFrame,
 		loadPerson,
+		firstLoad = true,
+		imagesLoaded = 0,
+		imagesToLoad = 6,
+		firstLoader,
 		shuffleImages;
 
 	getSize = APP.getSize = function() {
@@ -45,10 +49,22 @@ $(document).ready(function() {
 		var newImage = new Image();
 		newImage.src = newSrc;
 
+		$('#content .loader')
+		.css({
+			opacity: 1
+		});
+
 		newImage.onload = function() {
+			$('#content .loader')
+			.animate({
+				opacity: 0
+			});
+
 			$element.attr('src', newImage.src);
 			$(window).trigger('repositionFrames');
 			newImage = null;
+
+			firstLoader();
 		};
 	};
 
@@ -126,6 +142,8 @@ $(document).ready(function() {
 				"background-color": 'transparent'
 			})
 			.removeClass('loading');
+
+			firstLoader();
 		};
 	}
 
@@ -154,6 +172,21 @@ $(document).ready(function() {
 			loadImageByNameIntoFrame(person[f][randomImageIndex], f);
 		}
 	};
+
+	firstLoader = function() {
+		if (!firstLoad) return;
+
+		imagesLoaded++;
+
+		if (imagesLoaded >= imagesToLoad) {
+			$('#content .loader')
+			.animate({
+				opacity: 0
+			});
+
+			firstLoad = false;
+		}
+	}
 
 	// Bootstrap
 	replaceImages();
