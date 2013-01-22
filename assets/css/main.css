@@ -93,6 +93,31 @@ textarea {
 
 .frame.loading {
     opacity: 0.5;
+    -webkit-transition: opacity .1s ease;
+    -moz-transition: opacity .1s ease;
+    -ms-transition: opacity .1s ease;
+    -o-transition: opacity .1s ease;
+    transition: opacity .1s ease;
+}
+
+.frame[data-frame="1"] {
+    z-index: 10;
+}
+
+.frame[data-frame="2"] {
+    z-index: 9;
+}
+
+.frame[data-frame="3"] {
+    z-index: 6;
+}
+
+.frame[data-frame="4"] {
+    z-index: 7;
+}
+
+.frame[data-frame="5"] {
+    z-index: 8;
 }
 
 #shuffle {
