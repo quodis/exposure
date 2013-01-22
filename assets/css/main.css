@@ -422,6 +422,7 @@ textarea[contenteditable] {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .loader {
         background-image: url(../img/layout/loader@2x.gif);
+        background-size: 32px auto;
     }
 
     .frame.loading .loader {
