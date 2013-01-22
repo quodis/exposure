@@ -108,8 +108,15 @@ textarea {
         max-height: 100%;
     }
 
-.frame.loading {
-    opacity: 0.5;
+.frame .loader {
+    display: none;
+    opacity: 0;
+    background: transparent url(../img/layout/loader-frame.gif) no-repeat center center;
+}
+
+.frame.loading .loader{
+    display: block;
+    opacity: .9;
     -webkit-transition: opacity .2s ease;
     -moz-transition: opacity .2s ease;
     -ms-transition: opacity .2s ease;
@@ -349,6 +356,12 @@ textarea[contenteditable] {
    Modify as content requires.
    ========================================================================== */
 
+@media only screen and (max-width: 720px) {
+    .frame.loading .loader {
+        background-size: 10px auto;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     body {
         margin: 10px 0;
@@ -405,6 +418,11 @@ textarea[contenteditable] {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .loader {
         background-image: url(../img/layout/loader@2x.gif);
+    }
+
+    .frame.loading .loader {
+        background-image: url(../img/layout/loader-frame@2x.gif);
+        background-size: auto 20px;
     }
 
     .toolbar .btn {

@@ -12,7 +12,7 @@ $(document).ready(function() {
 		loadBackgroundImage,
 		positionFrames,
 		hideFrames,
-		loadBackgroundImageIntoFrame,
+		loadImageIntoFrame,
 		loadBackgroundImageByNameIntoFrame,
 		loadPerson,
 		firstLoad = true,
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		newImage.src = newSrc;
 
 		if (!firstLoad) {
-			$('#content .loader')
+			$('#content .content > .loader')
 			.css({
 				opacity: 1
 			});
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
 		newImage.onload = function() {
 			if (!firstLoad) {
-				$('#content .loader')
+				$('#content .content > .loader')
 				.css({
 					opacity: 0
 				});
@@ -97,8 +97,6 @@ $(document).ready(function() {
 			size = getSize()
 			offsetX = (size == 'medium' || size == 'small') ? 60 : 30,
 			offsetY = (size == 'medium' || size == 'small') ? 60 : 30;
-
-			console.log(offsetX, offsetY);
 
 		offsetX = (offsetX * actualWidth) / referenceWidth;
 		offsetY = (offsetY * actualHeight) / referenceHeight;
@@ -133,9 +131,13 @@ $(document).ready(function() {
 		});
 	};
 
-	loadBackgroundImageIntoFrame = function(imageIndex, frameIndex) {
+	loadImageIntoFrame = function(imageIndex, frameIndex) {
 		var frames = APP.config.frames,
 			frame,
+			$frame,
+			image,
+			extension = '.png',
+			imageURL,
 			imageName;
 
 		frameIndex -= 1;
@@ -148,14 +150,11 @@ $(document).ready(function() {
 		frame = frames[frameIndex];
 		imageName = frame.images[imageIndex];
 
-		loadBackgroundImageByNameIntoFrame(imageName, frameIndex);
-	};
+		$frame = $('[data-frame="' + (frameIndex + 1) + '"]');
 
-	loadBackgroundImageByNameIntoFrame = function(imageName, frameIndex) {
-		var image,
-			$frame,
-			extension = '.png',
-			imageURL = "/assets/img/content/" + imageName + "-" + getSize();
+		$frame.data('current', imageIndex);
+
+		imageURL = "/assets/img/content/" + imageName + "-" + getSize();
 
 		if (isRetina && getSize() != 'huge') {
 			imageURL += retinaName;
@@ -181,7 +180,8 @@ $(document).ready(function() {
 
 			firstLoader();
 		};
-	}
+	};
+
 
 	APP.shuffleImages = shuffleImages = function() {
 		var frames = APP.config.frames,
@@ -192,7 +192,7 @@ $(document).ready(function() {
 			frame = frames[f];
 			randomImageIndex = Math.floor(Math.random() * frame.images.length) + 1;
 
-			loadBackgroundImageIntoFrame(randomImageIndex, f+1);
+			loadImageIntoFrame(randomImageIndex, f+1);
 		}
 	};
 
@@ -200,12 +200,17 @@ $(document).ready(function() {
 		var people = APP.config.people,
 			frames = APP.config.frames,
 			person = people[name],
+			image,
 			randomImageIndex;
 
 		for (var f=0; f<frames.length; f++) {
 			randomImageIndex = Math.floor(Math.random() * person[f].length);
+			image = person[f][randomImageIndex],
+			imageIndex = APP.config.frames[f].images.indexOf(image) + 1;
 
-			loadBackgroundImageByNameIntoFrame(person[f][randomImageIndex], f);
+			console.log(image, imageIndex, APP.config.frames[f].images.indexOf(image));
+
+			loadImageIntoFrame(imageIndex, f+1);
 		}
 	};
 
@@ -215,7 +220,7 @@ $(document).ready(function() {
 		imagesLoaded++;
 
 		if (imagesLoaded >= imagesToLoad) {
-			$('#content .loader')
+			$('#content .content > .loader')
 			.css({
 				opacity: 0
 			});
