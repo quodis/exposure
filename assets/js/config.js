@@ -11,8 +11,12 @@ APP.config = {
 			name: 'medium'
 		},
 		{
-			max: Infinity,
+			max: 1440,
 			name: 'large'
+		},
+		{
+			max: Infinity,
+			name: 'huge'
 		}
 	],
 	reference: {
