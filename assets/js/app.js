@@ -1,13 +1,15 @@
 $(document).ready(function() {
 	var APP = window.APP || {};
 
-	var getSize,
+	var isRetina = window.devicePixelRatio > 1,
+		retinaName = "@2x",
+		getSize,
 		replaceImages,
-		loadImage,
+		loadBackgroundImage,
 		positionFrames,
 		hideFrames,
-		loadImageIntoFrame,
-		loadImageByNameIntoFrame,
+		loadBackgroundImageIntoFrame,
+		loadBackgroundImageByNameIntoFrame,
 		loadPerson,
 		firstLoad = true,
 		imagesLoaded = 0,
@@ -39,13 +41,22 @@ $(document).ready(function() {
 		APP.currentSize = size;
 
 		$('img[data-responsive="true"]').each(function() {
-			var $this = $(this);
-			loadImage($this, $this.data(size));
+			var $this = $(this),
+				imageSrc = $this.data(size),
+				extension;
+
+			if (isRetina && getSize() != 'huge') {
+				extension = imageSrc.substring(imageSrc.indexOf('.'), imageSrc.length);
+				imageSrc = imageSrc.substring(0, imageSrc.indexOf('.'));
+				imageSrc += retinaName + extension;
+			}
+
+			loadBackgroundImage($this, imageSrc);
 			$(window).trigger('repositionFrames');
 		});
 	};
 
-	loadImage = function($element, newSrc) {
+	loadBackgroundImage = function($element, newSrc) {
 		var newImage = new Image();
 		newImage.src = newSrc;
 
@@ -67,8 +78,6 @@ $(document).ready(function() {
 			$element.attr('src', newImage.src);
 			$(window).trigger('repositionFrames');
 			newImage = null;
-
-			console.log('loaded background');
 
 			firstLoader();
 		};
@@ -110,7 +119,7 @@ $(document).ready(function() {
 		});
 	};
 
-	loadImageIntoFrame = function(imageIndex, frameIndex) {
+	loadBackgroundImageIntoFrame = function(imageIndex, frameIndex) {
 		var frames = APP.config.frames,
 			frame,
 			imageName;
@@ -125,17 +134,24 @@ $(document).ready(function() {
 		frame = frames[frameIndex];
 		imageName = frame.images[imageIndex];
 
-		loadImageByNameIntoFrame(imageName, frameIndex);
+		loadBackgroundImageByNameIntoFrame(imageName, frameIndex);
 	};
 
-	loadImageByNameIntoFrame = function(imageName, frameIndex) {
+	loadBackgroundImageByNameIntoFrame = function(imageName, frameIndex) {
 		var image,
 			$frame,
-			imageURL = "/assets/img/content/" + imageName + "-" + getSize() + ".png";
+			extension = '.png',
+			imageURL = "/assets/img/content/" + imageName + "-" + getSize();
+
+		if (isRetina && getSize() != 'huge') {
+			imageURL += retinaName;
+		}
+
+		imageURL += extension;
 
 		$frame = $('[data-frame="' + (frameIndex + 1) + '"]');
 
-		console.log('loading image:' + imageURL + '.png into frame: ', $frame);
+		console.log('loading image:' + imageURL + ' into frame: ', $frame);
 
 		image = new Image()
 		image.src = imageURL;
@@ -162,7 +178,7 @@ $(document).ready(function() {
 			frame = frames[f];
 			randomImageIndex = Math.floor(Math.random() * frame.images.length) + 1;
 
-			loadImageIntoFrame(randomImageIndex, f+1);
+			loadBackgroundImageIntoFrame(randomImageIndex, f+1);
 		}
 	};
 
@@ -175,7 +191,7 @@ $(document).ready(function() {
 		for (var f=0; f<frames.length; f++) {
 			randomImageIndex = Math.floor(Math.random() * person[f].length);
 
-			loadImageByNameIntoFrame(person[f][randomImageIndex], f);
+			loadBackgroundImageByNameIntoFrame(person[f][randomImageIndex], f);
 		}
 	};
 
