@@ -120,20 +120,25 @@ textarea {
     z-index: 8;
 }
 
-#shuffle {
-    width: 150px;
-    height: 150px;
-    background: white url(../img/layout/shuffle.png) no-repeat 0 0;
-    text-indent: -9999px;
+.toolbar {
     position: absolute;
-    right: 10px;
-    top: 10px;
-    border: none;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 15;
 }
 
-#shuffle:active {
-    top:11px;
-    right: 9px;
+.toolbar ul {
+    list-style-type: none;
+}
+
+.toolbar ul li {
+    display: inline;
+}
+
+.toolbar button {
+    border: 0;
+    background: transparent;
 }
 
 

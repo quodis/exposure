@@ -7,6 +7,8 @@ $(document).ready(function() {
 		positionFrames,
 		hideFrames,
 		loadImageIntoFrame,
+		loadImageByNameIntoFrame,
+		loadPerson,
 		shuffleImages;
 
 	testSize = APP.testSize = function() {
@@ -89,10 +91,7 @@ $(document).ready(function() {
 	loadImageIntoFrame = function(imageIndex, frameIndex) {
 		var frames = APP.config.frames,
 			frame,
-			imageName,
-			imageURL,
-			image,
-			$frame;
+			imageName;
 
 		frameIndex -= 1;
 		imageIndex -= 1;
@@ -103,7 +102,14 @@ $(document).ready(function() {
 
 		frame = frames[frameIndex];
 		imageName = frame.images[imageIndex];
-		imageURL = "/assets/img/content/" + imageName + ".png";
+
+		loadImageByNameIntoFrame(imageName, frameIndex);
+	};
+
+	loadImageByNameIntoFrame = function(imageName, frameIndex) {
+		var image,
+			$frame,
+			imageURL = "/assets/img/content/" + imageName + ".png";
 
 		$frame = $('[data-frame="' + (frameIndex + 1) + '"]');
 
@@ -121,7 +127,7 @@ $(document).ready(function() {
 			})
 			.removeClass('loading');
 		};
-	};
+	}
 
 	APP.shuffleImages = shuffleImages = function() {
 		var frames = APP.config.frames,
@@ -134,7 +140,20 @@ $(document).ready(function() {
 
 			loadImageIntoFrame(randomImageIndex, f+1);
 		}
-	}
+	};
+
+	APP.loadPerson = loadPerson = function(name) {
+		var people = APP.config.people,
+			frames = APP.config.frames,
+			person = people[name],
+			randomImageIndex;
+
+		for (var f=0; f<frames.length; f++) {
+			randomImageIndex = Math.floor(Math.random() * person[f].length);
+
+			loadImageByNameIntoFrame(person[f][randomImageIndex], f);
+		}
+	};
 
 	// Bootstrap
 	replaceImages();
@@ -149,5 +168,10 @@ $(document).ready(function() {
 	$('#shuffle').on('click', function(evt) {
 		evt.preventDefault();
 		shuffleImages();
+	});
+
+	$('.person').on('click', function(evt) {
+		evt.preventDefault();
+		loadPerson($(this).data('person'));
 	})
 });
