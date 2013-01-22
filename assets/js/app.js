@@ -49,20 +49,26 @@ $(document).ready(function() {
 		var newImage = new Image();
 		newImage.src = newSrc;
 
-		$('#content .loader')
-		.css({
-			opacity: 1
-		});
+		if (!firstLoad) {
+			$('#content .loader')
+			.css({
+				opacity: 1
+			});
+		}
 
 		newImage.onload = function() {
-			$('#content .loader')
-			.animate({
-				opacity: 0
-			});
+			if (!firstLoad) {
+				$('#content .loader')
+				.animate({
+					opacity: 0
+				});
+			}
 
 			$element.attr('src', newImage.src);
 			$(window).trigger('repositionFrames');
 			newImage = null;
+
+			console.log('loaded background');
 
 			firstLoader();
 		};
