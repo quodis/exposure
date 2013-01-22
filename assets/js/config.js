@@ -24,6 +24,38 @@ APP.config = {
 		height: 1920
 	},
 	extension: '.png',
+	clickAreas: [
+		{
+			x: 1910,
+			y: 1170,
+			width: 660,
+			height: 746
+		},
+		{
+			x: 235,
+			y: 855,
+			width: 667,
+			height: 1070
+		},
+		{
+			x: 780.33,
+			y: 159.15,
+			width: 407,
+			height: 690
+		},
+		{
+			x: 1587.25,
+			y: 63.63,
+			width: 376,
+			height: 922
+		},
+		{
+			x: 1982,
+			y: 553,
+			width: 540,
+			height: 586
+		}
+	],
 	frames: [
 		{
 			x: 1250,

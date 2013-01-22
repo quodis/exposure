@@ -91,6 +91,10 @@ textarea {
     transition: opacity .5s ease;
 }
 
+.clickArea {
+    cursor: pointer;
+}
+
 .frame {
     position: absolute;
     background-size: 100%;
