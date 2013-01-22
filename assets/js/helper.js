@@ -1,4 +1,3 @@
-
 /**
  * MBP - Mobile boilerplate helper functions
  */
@@ -122,7 +121,7 @@
     };
 
     MBP.fastButton.prototype.onTouchStart = function(event) {
-        var element = event.srcElement;
+        var element = event.target || event.srcElement;
         event.stopPropagation();
         element.addEventListener('touchend', this, false);
         document.body.addEventListener('touchmove', this, false);
@@ -141,7 +140,7 @@
 
     MBP.fastButton.prototype.onClick = function(event) {
         event = event || window.event;
-        var element = event.srcElement;
+        var element = event.target || event.srcElement;
         if (event.stopPropagation) {
             event.stopPropagation();
         }
@@ -155,7 +154,7 @@
     };
 
     MBP.fastButton.prototype.reset = function(event) {
-        var element = event.srcElement;
+        var element = event.target || event.srcElement;
         rmEvt(element, 'touchend', this, false);
         rmEvt(document.body, 'touchmove', this, false);
 
@@ -290,7 +289,7 @@
         textLineHeight = (textLineHeight.indexOf('px') == -1) ? setLineHeight : parseInt(textLineHeight, 10);
 
         element.style.overflow = 'hidden';
-        element.addEventListener ? element.addEventListener('keyup', handler, false) : element.attachEvent('onkeyup', handler);
+        element.addEventListener ? element.addEventListener('input', handler, false) : element.attachEvent('onpropertychange', handler);
     };
 
     /**
@@ -305,9 +304,10 @@
     /**
      * Prevent default scrolling on document window
      */
-
+     
     MBP.preventScrolling = function() {
         document.addEventListener('touchmove', function(e) {
+            if (e.target.type === 'range') { return; }
             e.preventDefault();
         }, false);
     };
@@ -349,8 +349,8 @@
         head = document.getElementsByTagName('head')[0];
 
         if (navigator.platform === 'iPad') {
-            portrait = pixelRatio === 2 ? 'img/startup/startup-tablet-portrait-retina.png' : 'img/startup/startup-tablet-portrait.png';
-            landscape = pixelRatio === 2 ? 'img/startup/startup-tablet-landscape-retina.png' : 'img/startup/startup-tablet-landscape.png';
+            portrait = pixelRatio === 2 ? 'assets/img/startup/startup-tablet-portrait-retina.png' : 'assets/img/startup/startup-tablet-portrait.png';
+            landscape = pixelRatio === 2 ? 'assets/img/startup/startup-tablet-landscape-retina.png' : 'assets/img/startup/startup-tablet-landscape.png';
 
             link1 = document.createElement('link');
             link1.setAttribute('rel', 'apple-touch-startup-image');
@@ -364,12 +364,17 @@
             link2.setAttribute('href', landscape);
             head.appendChild(link2);
         } else {
-            portrait = pixelRatio === 2 ? "img/startup/startup-retina.png" : "img/startup/startup.png";
-
+            portrait = pixelRatio === 2 ? "assets/img/startup/startup-retina.png" : "assets/img/startup/startup.png";
+            portrait = screen.height === 568 ? "assets/img/startup/startup-retina-4in.png" : portrait;
             link1 = document.createElement('link');
             link1.setAttribute('rel', 'apple-touch-startup-image');
             link1.setAttribute('href', portrait);
             head.appendChild(link1);
+        }
+
+        //hack to fix letterboxed full screen web apps on 4" iPhone / iPod
+        if ((navigator.platform === 'iPhone' || 'iPod') && (screen.height === 568)) {
+            document.querySelector("meta[name=viewport]").content="width=320.1";
         }
     };
 

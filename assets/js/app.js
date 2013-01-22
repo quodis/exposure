@@ -1,3 +1,7 @@
+MBP.scaleFix();
+MBP.hideUrlBarOnLoad();
+MBP.startupImage();
+
 $(document).ready(function() {
 	var APP = window.APP || {};
 
@@ -70,7 +74,7 @@ $(document).ready(function() {
 		newImage.onload = function() {
 			if (!firstLoad) {
 				$('#content .loader')
-				.animate({
+				.css({
 					opacity: 0
 				});
 			}
@@ -85,10 +89,20 @@ $(document).ready(function() {
 
 	positionFrames = APP.positionFrames = function() {
 		var $background = $('#background'),
+			$content = $('#content'),
 			referenceWidth = APP.config.reference.width,
 			referenceHeight = APP.config.reference.height,
 			actualWidth = parseInt($background.css('width'), 10),
-			actualHeight = parseInt($background.css('height'), 10);
+			actualHeight = parseInt($background.css('height'), 10),
+			size = getSize()
+			offsetX = (size == 'medium' || size == 'small') ? 60 : 30,
+			offsetY = (size == 'medium' || size == 'small') ? 60 : 30;
+
+			console.log(offsetX, offsetY);
+
+		offsetX = (offsetX * actualWidth) / referenceWidth;
+		offsetY = (offsetY * actualHeight) / referenceHeight;
+
 
 		_.each(APP.config.frames, function(frame, index) {
 			var newX = (frame.x * actualWidth) / referenceWidth,
@@ -99,8 +113,8 @@ $(document).ready(function() {
 				$frame = $('[data-frame="' + frameIndex + '"]');
 
 			$frame.css({
-				left: newX,
-				top: newY,
+				left: newX + offsetX,
+				top: newY + offsetY,
 				width: newWidth,
 				height: newHeight,
 				visibility: 'visible'
@@ -202,7 +216,7 @@ $(document).ready(function() {
 
 		if (imagesLoaded >= imagesToLoad) {
 			$('#content .loader')
-			.animate({
+			.css({
 				opacity: 0
 			});
 

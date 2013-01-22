@@ -67,6 +67,9 @@ textarea {
 
 #content {
     position: relative;
+    padding: 10px;
+    background: #b49a78;
+    margin: 20px;
 }
 
 #background {
@@ -79,20 +82,14 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    background: #FFF;
+    background: #b49a78 url(../img/layout/loader.gif) no-repeat center center;
     z-index: 11;
-    -webkit-transition: opacity .1s ease;
-    -moz-transition: opacity .1s ease;
-    -ms-transition: opacity .1s ease;
-    -o-transition: opacity .1s ease;
-    transition: opacity .1s ease;
+    -webkit-transition: opacity .5s ease;
+    -moz-transition: opacity .5s ease;
+    -ms-transition: opacity .5s ease;
+    -o-transition: opacity .5s ease;
+    transition: opacity .5s ease;
 }
-
-    .loader .text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    }
 
 .frame {
     position: absolute;
@@ -113,11 +110,11 @@ textarea {
 
 .frame.loading {
     opacity: 0.5;
-    -webkit-transition: opacity .1s ease;
-    -moz-transition: opacity .1s ease;
-    -ms-transition: opacity .1s ease;
-    -o-transition: opacity .1s ease;
-    transition: opacity .1s ease;
+    -webkit-transition: opacity .2s ease;
+    -moz-transition: opacity .2s ease;
+    -ms-transition: opacity .2s ease;
+    -o-transition: opacity .2s ease;
+    transition: opacity .2s ease;
 }
 
 .frame[data-frame="1"] {
@@ -142,37 +139,91 @@ textarea {
 
 .toolbar {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -20px;
+    left: 50%;
     background: #fff;
     z-index: 15;
+    width: 430px;
+    margin-left: -200px;
 }
 
 .toolbar ul {
     list-style-type: none;
+    overflow: hidden;
+    margin: 0 20px;
+    padding: 0;
 }
 
 .toolbar ul li {
-    display: inline;
+    float: left;
+    margin: 10px 5px;
 }
 
-.toolbar button {
+.toolbar .btn {
     border: 0;
-    background: transparent;
+    background: transparent no-repeat;
+    width: 40px;
+    height: 40px;
+    -webkit-transition: opacity .2s ease;
+    -moz-transition: opacity .2s ease;
+    -ms-transition: opacity .2s ease;
+    -o-transition: opacity .2s ease;
+    transition: opacity .2s ease;
 }
 
+.toolbar .btn:hover {
+    opacity: 0.7;
+}
 
+.toolbar .btn:active {
+    position: relative;
+    top: 1px;
+}
 
+.toolbar .logo .title {
+    margin: 0;
+    padding: 0;
+}
 
+.toolbar .logo, .toolbar .logo .btn {
+    width: 90px;
+    height: 40px;
+    margin: 0 0 0 0;
+    padding: 0;
+}
 
+.toolbar .logo {
+    margin-top: 10px;
+}
 
+.toolbar .logo a {
+    background: transparent url(../img/layout/logo.png) no-repeat;
+    display: block;
+}
 
+.toolbar [data-person="bruno"] {
+    background-image: url(../img/layout/bruno.png);
+}
 
+.toolbar [data-person="jan"] {
+    background-image: url(../img/layout/jan.png);
+}
 
+.toolbar [data-person="leihla"] {
+    background-image: url(../img/layout/leihla.png);
+}
 
+.toolbar [data-person="leo"] {
+    background-image: url(../img/layout/leo.png);
+}
 
+.toolbar [data-person="ricardo"] {
+    background-image: url(../img/layout/ricardo.png);
+}
 
-
+.toolbar #shuffle {
+    background-image: url(../img/layout/dice.png);
+}
 
 /* ==========================================================================
    Helper classes
@@ -298,11 +349,93 @@ textarea[contenteditable] {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 800px) {
-    /* Style adjustments for viewports that meet the condition */
+@media only screen and (max-width: 1024px) {
+    body {
+        margin: 10px 0;
+    }
+
+    .toolbar .logo {
+        width: 100%;
+    }
+
+    .toolbar .logo .btn {
+        margin: 0 auto;
+        padding-bottom: 10px;
+    }
+
+    .toolbar {
+        position: static;
+        width: 320px;
+        margin: 0 auto;
+        padding-bottom: 10px;
+    }
+
+    .toolbar ul {
+        margin: 0;
+    }
+
+    .toolbar ul li {
+        margin: 10px 4px;
+    }
+
+    .toolbar ul li:nth-child(2) {
+        margin-left: 10px;
+    }
+
+    .toolbar .ir, .toolbar ul li {
+        display: inline;
+        float: none;
+    }
+
+    #content .content {
+        position: relative;
+        padding: 10px;
+        background: #b49a78;
+        margin: 0 10px;
+    }
+
+    #content {
+        position: relative;
+        padding: 0;
+        background: transparent;
+        margin: 0;
+    }
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
-    /* Style adjustments for viewports that meet the condition */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .loader {
+        background-image: url(../img/layout/loader@2x.gif);
+    }
+
+    .toolbar .btn {
+        background-size: auto 40px;
+    }
+
+    .toolbar .logo a {
+        background-image: url(../img/layout/logo@2x.png);
+    }
+
+    .toolbar [data-person="bruno"] {
+        background-image: url(../img/layout/bruno@2x.png);
+    }
+
+    .toolbar [data-person="jan"] {
+        background-image: url(../img/layout/jan@2x.png);
+    }
+
+    .toolbar [data-person="leihla"] {
+        background-image: url(../img/layout/leihla@2x.png);
+    }
+
+    .toolbar [data-person="leo"] {
+        background-image: url(../img/layout/leo@2x.png);
+    }
+
+    .toolbar [data-person="ricardo"] {
+        background-image: url(../img/layout/ricardo@2x.png);
+    }
+
+    .toolbar #shuffle {
+        background-image: url(../img/layout/dice@2x.png);
+    }
 }
