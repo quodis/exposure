@@ -70,6 +70,7 @@ textarea {
     padding: 10px;
     background: #b49a78;
     margin: 20px;
+    min-height: 100px;
 }
 
 #background {
