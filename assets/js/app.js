@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var APP = window.APP || {};
 
-	var testSize,
+	var getSize,
 		replaceImages,
 		loadImage,
 		positionFrames,
@@ -11,7 +11,7 @@ $(document).ready(function() {
 		loadPerson,
 		shuffleImages;
 
-	testSize = APP.testSize = function() {
+	getSize = APP.getSize = function() {
 		var config = APP.config.sizes,
 			width = Math.max(document.documentElement.clientWidth, document.documentElement.offsetWidth),
 			size = null;
@@ -25,7 +25,7 @@ $(document).ready(function() {
 	};
 
 	replaceImages = APP.replaceImages = function() {
-		var size = testSize();
+		var size = getSize();
 
 		if (APP.currentSize === size) {
 			$(window).trigger('repositionFrames');
@@ -109,11 +109,11 @@ $(document).ready(function() {
 	loadImageByNameIntoFrame = function(imageName, frameIndex) {
 		var image,
 			$frame,
-			imageURL = "/assets/img/content/" + imageName + ".png";
+			imageURL = "/assets/img/content/" + imageName + "-" + getSize() + ".png";
 
 		$frame = $('[data-frame="' + (frameIndex + 1) + '"]');
 
-		console.log('loading image:' + imageName + '.png into frame: ', $frame);
+		console.log('loading image:' + imageURL + '.png into frame: ', $frame);
 
 		image = new Image()
 		image.src = imageURL;

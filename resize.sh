@@ -1,10 +1,9 @@
 #!/bin/bash
 outputDir=assets/img/content
 
-rm $outputDir/*.*png
-rm $outputDir/*.*jpg
+rm $outputDir/*.*
 
-for file in assets/img/content/source/*@2x.png
+for file in assets/img/content/source/*@2x*
 do
   # do something on "$file"
   filename=$(basename "$file")
