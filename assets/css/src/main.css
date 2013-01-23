@@ -432,7 +432,7 @@ textarea[contenteditable] {
     }
 
     .toolbar .ir, .toolbar ul li {
-        display: inline;
+        display: inline-block;
         float: none;
     }
 
@@ -532,7 +532,7 @@ textarea[contenteditable] {
     }
 }
 
-@media (max-width:699px), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media only screen and (max-width:699px), (-webkit-min-pixel-ratio:2), (min-resolution: 192dpi) {
     .toolbar .share .facebook {
         background-image: url(../../img/layout/share@2x.png);
     }
