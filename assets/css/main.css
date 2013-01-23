@@ -438,7 +438,7 @@ textarea[contenteditable] {
 
     .frame.loading .loader {
         background-image: url(../img/layout/loader-frame@2x.gif);
-        background-size: auto 20px;
+        background-size: auto 10px;
     }
 
     .toolbar .btn {
