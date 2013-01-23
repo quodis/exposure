@@ -1,6 +1,11 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+  var CSS_SRC_DIR   = 'assets/css/src/',
+      CSS_BUILD_DIR = 'assets/css/dist/',
+      JS_SRC_DIR    = 'assets/js/src/',
+      JS_BUILD_DIR  = 'assets/js/dist/';
+
   // Project configuration.
   grunt.initConfig({
     meta: {
@@ -12,15 +17,25 @@ module.exports = function(grunt) {
         'Quodis; Licensed MIT */'
     },
     concat: {
-      dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:assets/js/vendor/jquery.min.js>', 'assets/js/helper.js', 'assets/js/plugins.js', 'assets/js/config.js', 'assets/js/app.js'],
-        dest: 'assets/js/dist/app.js'
+      css: {
+        src: CSS_SRC_DIR + '*.css',
+        dest: CSS_BUILD_DIR + 'app.css'
+      },
+      js: {
+        src: ['<banner:meta.banner>', '<file_strip_banner:' + JS_SRC_DIR + 'vendor/jquery.min.js>', JS_SRC_DIR + 'helper.js', JS_SRC_DIR + 'plugins.js', JS_SRC_DIR + 'config.js', JS_SRC_DIR + 'app.js'],
+        dest: JS_BUILD_DIR + 'app.js'
       }
     },
     min: {
-      dist: {
-        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: 'assets/js/dist/app.min.js'
+      js: {
+        src: ['<banner:meta.banner>', '<config:concat.js.dest>'],
+        dest: JS_SRC_DIR + 'app.min.js'
+      }
+    },
+    cssmin: {
+      css: {
+        src: CSS_BUILD_DIR + 'app.css',
+        dest: CSS_BUILD_DIR + 'app.min.css'
       }
     },
     globals: {
@@ -30,6 +45,8 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'concat min');
+  grunt.registerTask('default', 'concat min cssmin');
+
+  grunt.loadNpmTasks('grunt-css');
 
 };

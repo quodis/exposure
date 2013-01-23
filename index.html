@@ -25,9 +25,14 @@
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
         -->
 
-        <link rel="stylesheet" href="assets/css/normalize.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <script src="assets/js/vendor/modernizr-2.6.1.min.js"></script>
+        <!-- DEV
+        <link rel="stylesheet" href="assets/css/src/normalize.css">
+        <link rel="stylesheet" href="assets/css/src/main.css">
+        -->
+        <!-- PROD -->
+        <link rel="stylesheet" href="assets/css/dist/app.min.css">
+
+        <script src="assets/js/src/vendor/modernizr-2.6.1.min.js"></script>
     </head>
     <body>
 
@@ -83,11 +88,11 @@
         <!-- Add your site or application content here -->
 
         <!-- DEV
-        <script src="assets/js/vendor/jquery.min.js"></script>
-        <script src="assets/js/helper.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/config.js"></script>
-        <script src="assets/js/app.js"></script>
+        <script src="assets/js/src/vendor/jquery.min.js"></script>
+        <script src="assets/js/src/helper.js"></script>
+        <script src="assets/js/src/plugins.js"></script>
+        <script src="assets/js/src/config.js"></script>
+        <script src="assets/js/src/app.js"></script>
         -->
 
         <script src="assets/js/dist/app.min.js"></script>
