@@ -7,9 +7,9 @@
     Jan van Bruggen -- Web Developer
     Leihla Pinho -- Web Designer -- @leihla
     Leo Xavier -- Founder & Partner -- @lxvr
-    Ricardo Mestre -- Web Designer
+    Ricardo Mestre -- Web Designer -- @ricardom
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    jQuery, Modernizr, Underscore
+    jQuery, Modernizr

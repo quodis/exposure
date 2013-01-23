@@ -424,6 +424,9 @@ if (!(window.console && console.log)) {
     }());
 }
 
+// IndexOf polyfill
+[].indexOf||(Array.prototype.indexOf=function(a,b,c){for(c=this.length,b=(c+~~b)%c;b<c&&(!(b in this)||this[b]!==a);b++);return b^c?b:-1;})
+
 // Place any jQuery/helper plugins in here.
 /*
  * jQuery BBQ: Back Button & Query Library - v1.3pre - 8/26/2010

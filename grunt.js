@@ -51,7 +51,8 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'concat min cssmin smushit');
+  grunt.registerTask('default', 'concat min cssmin');
+  grunt.registerTask('optimizeImgs', 'smushit');
 
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-smushit');
