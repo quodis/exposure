@@ -150,11 +150,16 @@ textarea {
 
 .toolbar {
     position: absolute;
-    top: -20px;
+    top: -200px;
     left: 50%;
     z-index: 60;
     margin-left: -200px;
     height: 100px;
+    -webkit-transition: top .4s ease;
+    -moz-transition: top .4s ease;
+    -ms-transition: top .4s ease;
+    -o-transition: top .4s ease;
+    transition: top .4s ease;
 }
 
 .toolbar nav {
@@ -405,6 +410,7 @@ textarea[contenteditable] {
 
     .toolbar .logo {
         width: 100%;
+        text-align: center;
     }
 
     .toolbar .logo .btn {

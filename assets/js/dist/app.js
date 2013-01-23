@@ -855,6 +855,12 @@ $(document).ready(function() {
 
 			$('.person, #shuffle').removeClass('disabled');
 
+			setTimeout(function() {
+				$('.toolbar').css({
+					top: -20
+				});
+			}, 300);
+
 			firstLoad = false;
 		}
 	};
