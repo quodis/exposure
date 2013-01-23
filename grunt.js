@@ -8,6 +8,9 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    files: {
+      img: ['assets/img/layout', 'assets/img/startup', 'assets/img/touch']
+    },
     meta: {
       version: '1.1.0',
       banner: '/*! Quodis Layers - v<%= meta.version %> - ' +
@@ -38,6 +41,9 @@ module.exports = function(grunt) {
         dest: CSS_BUILD_DIR + 'app.min.css'
       }
     },
+    smushit: {
+      path: { src: '<config:files.img>' } // recursively replace minified images
+    },
     globals: {
         jQuery: true,
         APP: true
@@ -45,8 +51,9 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'concat min cssmin');
+  grunt.registerTask('default', 'concat min cssmin smushit');
 
   grunt.loadNpmTasks('grunt-css');
+  grunt.loadNpmTasks('grunt-smushit');
 
 };
