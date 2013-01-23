@@ -6,6 +6,7 @@ $(document).ready(function() {
 	var APP = window.APP || {};
 
 	var isRetina = window.devicePixelRatio > 1,
+		clickEvent = ('ontouchstart' in document) ? 'touchstart' : 'click',
 		retinaName = "@2x",
 		getSize,
 		replaceImages,
@@ -262,6 +263,8 @@ $(document).ready(function() {
 				display: 'none'
 			});
 
+			$('.person, #shuffle').removeClass('disabled');
+
 			firstLoad = false;
 		}
 	};
@@ -295,14 +298,14 @@ $(document).ready(function() {
 
 	$(window).on('repositionFrames', positionFrames);
 
-	$('#shuffle').on('click', function(evt) {
+	$('#shuffle').on(clickEvent, function(evt) {
 		evt.preventDefault();
-		shuffleImages();
+		if (!$(this).hasClass('disabled')) shuffleImages();
 	});
 
-	$('.person').on('click', function(evt) {
+	$('.person').on(clickEvent, function(evt) {
 		evt.preventDefault();
-		loadPerson($(this).data('person'));
+		if (!$(this).hasClass('disabled')) loadPerson($(this).data('person'));
 	});
 
 	// Bind to hashchange event
@@ -311,8 +314,10 @@ $(document).ready(function() {
 	});
 
 	// Frame click event
-	$('.clickArea').on('click', function(evt) {
+	$('.clickArea').on(clickEvent, function(evt) {
 		evt.preventDefault();
+
+		if (firstLoad) return;
 
 		var $this = $(this),
 			frameIndex = parseInt($this.data('area'), 10),
@@ -341,23 +346,4 @@ $(document).ready(function() {
 			isHashChangeActive = true;
 		}, 250);
     });
-
-
-
-
-	/*
-
-    var ctx = $('#canvas').get(0).getContext('2d'),
-		size = getSize();
-
-	var bg = new Image();
-	bg.src = 'assets/img/content/background-' + size + '.jpg';
-
-	ctx.canvas.width  = window.innerWidth;
-	ctx.canvas.height = window.innerHeight;
-
-	bg.onload = function() {
-		ctx.drawImage(bg, 0, 0);
-	};
-	*/
 });
