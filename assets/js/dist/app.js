@@ -947,7 +947,7 @@ $(document).ready(function() {
 					',top='    + top    +
 					',left='   + left;
 
-		url = url.replace('$$URL', ($(this).hasClass('facebook')) ? encodeURIComponent(window.location.href) : window.location.href);
+		url = url.replace('$$URL', encodeURIComponent(window.location.href));
 
 		window.open(url, $(this).attr('title'), opts);
 
