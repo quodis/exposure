@@ -67,8 +67,7 @@ textarea {
 
 #content {
     position: relative;
-    padding: 10px;
-    background: #b49a78;
+    border: 10px solid #b49a78;
     margin: 20px;
     min-height: 300px;
 }
@@ -407,10 +406,11 @@ textarea[contenteditable] {
 
     #content .content {
         position: relative;
-        padding: 10px;
+        padding: 0;
+        border: 10px solid #b49a78;
         background: #b49a78;
         margin: 0 10px;
-        min-height: 300px;
+        min-height: 230px;
     }
 
     #content {
@@ -418,6 +418,7 @@ textarea[contenteditable] {
         padding: 0;
         background: transparent;
         margin: 0;
+        border: none;
     }
 }
 

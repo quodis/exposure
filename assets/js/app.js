@@ -61,6 +61,13 @@ $(document).ready(function() {
 			loadBackgroundImage($this, imageSrc);
 			$(window).trigger('repositionFrames');
 		});
+
+		$('.frame').each(function(index) {
+			var $this = $(this),
+				current = $this.data('current');
+
+			if (current !== undefined) loadImageIntoFrame(current+1, index+1);
+		});
 	};
 
 	loadBackgroundImage = function($element, newSrc) {
@@ -92,19 +99,13 @@ $(document).ready(function() {
 		};
 	};
 
-	positionFrames = APP.positionFrames = function() {
+	positionFrames = function() {
 		var $background = $('#background'),
 			$content = $('#content'),
 			referenceWidth = APP.config.reference.width,
 			referenceHeight = APP.config.reference.height,
 			actualWidth = parseInt($background.css('width'), 10),
-			actualHeight = parseInt($background.css('height'), 10),
-			size = getSize()
-			offsetX = (size == 'medium' || size == 'small') ? 60 : 30,
-			offsetY = (size == 'medium' || size == 'small') ? 60 : 30;
-
-		offsetX = (offsetX * actualWidth) / referenceWidth;
-		offsetY = (offsetY * actualHeight) / referenceHeight;
+			actualHeight = parseInt($background.css('height'), 10);
 
 
 		_.each(APP.config.frames, function(frame, index) {
@@ -120,9 +121,10 @@ $(document).ready(function() {
 				newAreaWidth = (area.width * actualWidth) / referenceWidth,
 				newAreaHeight = (area.height * actualHeight) / referenceHeight
 
+
 			$frame.css({
-				left: newX + offsetX,
-				top: newY + offsetY,
+				left: newX,
+				top: newY,
 				width: newWidth,
 				height: newHeight,
 				visibility: 'visible'
@@ -131,8 +133,8 @@ $(document).ready(function() {
 			$('[data-area="' +  (index + 1) + '"]')
 			.css({
 				position: 'absolute',
-				left: newAreaX + offsetX,
-				top: newAreaY + offsetY,
+				left: newAreaX,
+				top: newAreaY,
 				width: newAreaWidth,
 				height: newAreaHeight,
 				zIndex: 50
@@ -203,7 +205,7 @@ $(document).ready(function() {
 	};
 
 
-	APP.shuffleImages = shuffleImages = function() {
+	shuffleImages = function() {
 		var frames = APP.config.frames,
 			frame,
 			randomImageIndex,
@@ -224,7 +226,7 @@ $(document).ready(function() {
 		$.bbq.pushState({set: imageSet});
 	};
 
-	APP.loadPerson = loadPerson = function(name) {
+	loadPerson = function(name) {
 		var people = APP.config.people,
 			frames = APP.config.frames,
 			person = people[name],
