@@ -366,7 +366,9 @@ $(document).ready(function() {
 					',top='    + top    +
 					',left='   + left;
 
-		url = url.replace('$$URL', encodeURIComponent(window.location.href));
+		url = url.replace(/\$\$URL/g, encodeURIComponent(window.location.href));
+
+		console.log(url);
 
 		window.open(url, $(this).attr('title'), opts);
 

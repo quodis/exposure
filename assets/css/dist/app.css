@@ -535,13 +535,15 @@ textarea[contenteditable] {
     }
 }
 
-@media only screen and (max-width:699px), (-webkit-min-pixel-ratio:2), (min-resolution: 192dpi) {
+@media only screen and (max-width: 699px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 699px) and (min-resolution: 192dpi) {
     .toolbar .share .facebook {
         background-image: url(../../img/layout/share@2x.png);
+        background-size: 90px auto;
     }
 
     .toolbar .share .twitter {
         background-image: url(../../img/layout/tweet@2x.png);
+        background-size: 130px auto;
     }
 }
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */
