@@ -468,7 +468,6 @@ textarea[contenteditable] {
     }
     .toolbar .logo .btn {
         margin: 0;
-        float: left;
     }
 
     .toolbar .logo .title {
