@@ -109,7 +109,7 @@ $(document).ready(function() {
 			actualHeight = parseInt($background.css('height'), 10);
 
 
-		_.each(APP.config.frames, function(frame, index) {
+		$.each(APP.config.frames, function(index, frame) {
 			var newX = (frame.x * actualWidth) / referenceWidth,
 				newY = (frame.y * actualHeight) / referenceHeight,
 				newWidth = (frame.width * actualWidth) / referenceWidth,
@@ -144,7 +144,7 @@ $(document).ready(function() {
 	};
 
 	hideFrames = function() {
-		_.each(APP.config.frames, function(frame, index) {
+		$.each(APP.config.frames, function(index, frame) {
 			var frameIndex = index + 1,
 				$frame = $('[data-frame="' + frameIndex + '"]');
 
@@ -292,7 +292,7 @@ $(document).ready(function() {
 	replaceImages();
 	loadFromHistory();
 
-	var lazyReplace = _.debounce(replaceImages, 150);
+	var lazyReplace = MBP.debounce(replaceImages, 150);
 	$(window).resize(lazyReplace);
 	$(window).resize(hideFrames);
 
