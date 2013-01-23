@@ -152,10 +152,13 @@ textarea {
     position: absolute;
     top: -20px;
     left: 50%;
-    background: #fff;
-    z-index: 15;
+    z-index: 60;
     margin-left: -200px;
-    height: 60px;
+    height: 100px;
+}
+
+.toolbar nav {
+    background: #fff;
 }
 
 .toolbar ul {
@@ -241,6 +244,28 @@ textarea {
 
 .toolbar #shuffle {
     background-image: url(../../img/layout/dice.png);
+}
+
+.toolbar .share {
+    text-align: center;
+}
+
+.toolbar .share li {
+    margin: 0;
+    float: none;
+    display: inline-block;
+}
+
+.toolbar .share .facebook {
+    background: transparent url(../../img/layout/share_white.png) no-repeat;
+    width: 90px;
+    height: 36px;
+}
+
+.toolbar .share .twitter {
+    background: transparent url(../../img/layout/tweet_white.png) no-repeat;
+    width: 130px;
+    height: 36px;
 }
 
 /* ==========================================================================
@@ -392,7 +417,6 @@ textarea[contenteditable] {
         width: 320px;
         height: auto;
         margin: 0 auto;
-        padding-bottom: 10px;
     }
 
     .toolbar ul {
@@ -427,6 +451,14 @@ textarea[contenteditable] {
         background: transparent;
         margin: 0;
         border: none;
+    }
+
+    .toolbar .share .facebook {
+        background-image: url(../../img/layout/share.png);
+    }
+
+    .toolbar .share .twitter {
+        background-image: url(../../img/layout/tweet.png);
     }
 }
 
@@ -488,8 +520,27 @@ textarea[contenteditable] {
     .toolbar #shuffle {
         background-image: url(../../img/layout/dice@2x.png);
     }
+
+    .toolbar .share .facebook {
+        background-image: url(../../img/layout/share_white@2x.png);
+        background-size: 90px auto;
+    }
+
+    .toolbar .share .twitter {
+        background-image: url(../../img/layout/tweet_white@2x.png);
+        background-size: 130px auto;
+    }
 }
 
+@media (max-width:699px), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .toolbar .share .facebook {
+        background-image: url(../../img/layout/share@2x.png);
+    }
+
+    .toolbar .share .twitter {
+        background-image: url(../../img/layout/tweet@2x.png);
+    }
+}
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */
 
 /* ==========================================================================

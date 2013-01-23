@@ -933,4 +933,24 @@ $(document).ready(function() {
 			isHashChangeActive = true;
 		}, 250);
     });
+
+    // Popups
+    $('.popup').click(function(event) {
+		var width  = 575,
+			height = 400,
+			left   = ($(window).width()  - width)  / 2,
+			top    = ($(window).height() - height) / 2,
+			url    = this.href,
+			opts   = 'status=1' +
+					',width='  + width  +
+					',height=' + height +
+					',top='    + top    +
+					',left='   + left;
+
+		url = url.replace('$$URL', ($(this).hasClass('facebook')) ? encodeURIComponent(window.location.href) : window.location.href);
+
+		window.open(url, $(this).attr('title'), opts);
+
+		return false;
+	});
 });
