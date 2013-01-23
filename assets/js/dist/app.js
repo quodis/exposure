@@ -444,6 +444,7 @@ if (!(window.console && console.log)) {
 var APP = window.APP || {};
 
 APP.config = {
+	endpoint: 'http://d1yspmzor1g36p.cloudfront.net/',
 	sizes: [
 		{
 			max: 320,
@@ -755,7 +756,7 @@ $(document).ready(function() {
 
 		$frame.data('current', imageIndex);
 
-		imageURL = "/assets/img/content/" + imageName + "-" + getSize();
+		imageURL = APP.config.endpoint + "all/" + imageName + "-" + getSize();
 
 		if (isRetina && getSize() != 'huge') {
 			imageURL += retinaName;

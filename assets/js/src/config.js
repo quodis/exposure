@@ -1,6 +1,7 @@
 var APP = window.APP || {};
 
 APP.config = {
+	endpoint: 'http://d1yspmzor1g36p.cloudfront.net/',
 	sizes: [
 		{
 			max: 320,
