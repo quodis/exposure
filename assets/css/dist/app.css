@@ -82,7 +82,7 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    background: #b49a78 url(../img/layout/loader.gif) no-repeat center center;
+    background: #b49a78 url(../../img/layout/loader.gif) no-repeat center center;
     z-index: 11;
     -webkit-transition: opacity .5s ease;
     -moz-transition: opacity .5s ease;
@@ -115,7 +115,7 @@ textarea {
 .frame .loader {
     display: none;
     opacity: 0;
-    background: transparent url(../img/layout/loader-frame.gif) no-repeat center center;
+    background: transparent url(../../img/layout/loader-frame.gif) no-repeat center center;
 }
 
 .frame.loading .loader{
@@ -215,32 +215,32 @@ textarea {
 }
 
 .toolbar .logo a {
-    background: transparent url(../img/layout/logo.png) no-repeat;
+    background: transparent url(../../img/layout/logo.png) no-repeat;
     display: block;
 }
 
 .toolbar [data-person="bruno"] {
-    background-image: url(../img/layout/bruno.png);
+    background-image: url(../../img/layout/bruno.png);
 }
 
 .toolbar [data-person="jan"] {
-    background-image: url(../img/layout/jan.png);
+    background-image: url(../../img/layout/jan.png);
 }
 
 .toolbar [data-person="leihla"] {
-    background-image: url(../img/layout/leihla.png);
+    background-image: url(../../img/layout/leihla.png);
 }
 
 .toolbar [data-person="leo"] {
-    background-image: url(../img/layout/leo.png);
+    background-image: url(../../img/layout/leo.png);
 }
 
 .toolbar [data-person="ricardo"] {
-    background-image: url(../img/layout/ricardo.png);
+    background-image: url(../../img/layout/ricardo.png);
 }
 
 .toolbar #shuffle {
-    background-image: url(../img/layout/dice.png);
+    background-image: url(../../img/layout/dice.png);
 }
 
 /* ==========================================================================
@@ -432,12 +432,12 @@ textarea[contenteditable] {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .loader {
-        background-image: url(../img/layout/loader@2x.gif);
+        background-image: url(../../img/layout/loader@2x.gif);
         background-size: 32px auto;
     }
 
     .frame.loading .loader {
-        background-image: url(../img/layout/loader-frame@2x.gif);
+        background-image: url(../../img/layout/loader-frame@2x.gif);
         background-size: auto 10px;
     }
 
@@ -446,31 +446,31 @@ textarea[contenteditable] {
     }
 
     .toolbar .logo a {
-        background-image: url(../img/layout/logo@2x.png);
+        background-image: url(../../img/layout/logo@2x.png);
     }
 
     .toolbar [data-person="bruno"] {
-        background-image: url(../img/layout/bruno@2x.png);
+        background-image: url(../../img/layout/bruno@2x.png);
     }
 
     .toolbar [data-person="jan"] {
-        background-image: url(../img/layout/jan@2x.png);
+        background-image: url(../../img/layout/jan@2x.png);
     }
 
     .toolbar [data-person="leihla"] {
-        background-image: url(../img/layout/leihla@2x.png);
+        background-image: url(../../img/layout/leihla@2x.png);
     }
 
     .toolbar [data-person="leo"] {
-        background-image: url(../img/layout/leo@2x.png);
+        background-image: url(../../img/layout/leo@2x.png);
     }
 
     .toolbar [data-person="ricardo"] {
-        background-image: url(../img/layout/ricardo@2x.png);
+        background-image: url(../../img/layout/ricardo@2x.png);
     }
 
     .toolbar #shuffle {
-        background-image: url(../img/layout/dice@2x.png);
+        background-image: url(../../img/layout/dice@2x.png);
     }
 }
 
