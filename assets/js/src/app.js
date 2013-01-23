@@ -5,6 +5,8 @@ MBP.startupImage();
 $(document).ready(function() {
 	var APP = window.APP || {};
 
+	if ($('html').hasClass('lt-ie9')) window.location.href = '/unsupported.html';
+
 	var isRetina = window.devicePixelRatio > 1,
 		clickEvent = ('ontouchend' in document) ? 'touchend' : 'click',
 		retinaName = "@2x",
