@@ -348,21 +348,23 @@
         pixelRatio = window.devicePixelRatio;
         head = document.getElementsByTagName('head')[0];
 
-        if (navigator.platform === 'iPad') {
+        if (navigator.platform.search('iPad') != -1) {
             portrait = pixelRatio === 2 ? 'assets/img/startup/startup-tablet-portrait-retina.png' : 'assets/img/startup/startup-tablet-portrait.png';
             landscape = pixelRatio === 2 ? 'assets/img/startup/startup-tablet-landscape-retina.png' : 'assets/img/startup/startup-tablet-landscape.png';
 
-            link1 = document.createElement('link');
-            link1.setAttribute('rel', 'apple-touch-startup-image');
-            link1.setAttribute('media', 'screen and (orientation: portrait)');
-            link1.setAttribute('href', portrait);
-            head.appendChild(link1);
-
-            link2 = document.createElement('link');
-            link2.setAttribute('rel', 'apple-touch-startup-image');
-            link2.setAttribute('media', 'screen and (orientation: landscape)');
-            link2.setAttribute('href', landscape);
-            head.appendChild(link2);
+            if (window.orientation && Math.abs(window.orientation) === 0) {
+                link1 = document.createElement('link');
+                link1.setAttribute('rel', 'apple-touch-startup-image');
+                link1.setAttribute('media', 'screen and (orientation: portrait)');
+                link1.setAttribute('href', portrait);
+                head.appendChild(link1);
+            } else {
+                link2 = document.createElement('link');
+                link2.setAttribute('rel', 'apple-touch-startup-image');
+                link2.setAttribute('media', 'screen and (orientation: landscape)');
+                link2.setAttribute('href', landscape);
+                head.appendChild(link2);
+            }
         } else {
             portrait = pixelRatio === 2 ? "assets/img/startup/startup-retina.png" : "assets/img/startup/startup.png";
             portrait = screen.height === 568 ? "assets/img/startup/startup-retina-4in.png" : portrait;

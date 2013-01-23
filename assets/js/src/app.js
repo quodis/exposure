@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var APP = window.APP || {};
 
 	var isRetina = window.devicePixelRatio > 1,
-		clickEvent = ('ontouchstart' in document) ? 'touchstart' : 'click',
+		clickEvent = ('ontouchend' in document) ? 'touchend' : 'click',
 		retinaName = "@2x",
 		getSize,
 		replaceImages,
@@ -54,8 +54,8 @@ $(document).ready(function() {
 				extension;
 
 			if (isRetina && getSize() != 'huge') {
-				extension = imageSrc.substring(imageSrc.indexOf('.'), imageSrc.length);
-				imageSrc = imageSrc.substring(0, imageSrc.indexOf('.'));
+				extension = imageSrc.substring(imageSrc.lastIndexOf('.'), imageSrc.length);
+				imageSrc = imageSrc.substring(0, imageSrc.lastIndexOf('.'));
 				imageSrc += retinaName + extension;
 			}
 
