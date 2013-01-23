@@ -471,8 +471,12 @@ textarea[contenteditable] {
         float: left;
     }
 
+    .toolbar .logo .title {
+        margin-top: 10px;
+    }
+
     .toolbar {
-        width: 390px;
+        width: 420px;
         padding: 0;
         margin: 10px auto 0 auto;
     }
