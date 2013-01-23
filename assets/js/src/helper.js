@@ -395,4 +395,11 @@
         };
     };
 
+    MBP.Analytics = {
+        track: function(category, action, label, value) {
+            if (!_gaq) return;
+            _gaq.push(['_trackEvent', category, action, label, value]);
+        }
+    };
+
 })(document);

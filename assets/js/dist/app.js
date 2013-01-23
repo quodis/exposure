@@ -401,6 +401,13 @@
         };
     };
 
+    MBP.Analytics = {
+        track: function(category, action, label, value) {
+            if (!_gaq) return;
+            _gaq.push(['_trackEvent', category, action, label, value]);
+        }
+    };
+
 })(document);
 // Avoid `console` errors in browsers that lack a console.
 if (!(window.console && console.log)) {
@@ -535,7 +542,7 @@ APP.config = {
 			["2-1", "2-3", "2-4", "2-21"],
 			["3-5", "3-6", "3-18"],
 			["4-5", "4-6", "4-7", "4-8", "4-10", "4-19"],
-			["5-2", "5-9", "5-10"]
+			["5-9", "5-10"]
 		],
 		jan: [
 			["1-7", "1-7", "1-9", "1-14"],
@@ -548,19 +555,19 @@ APP.config = {
 			["1-6"],
 			["2-8", "2-12", "2-18"],
 			["3-13", "3-14", "3-15", "3-19"],
-			["4-1", "4-3", "4-14", "4-15"],
+			["4-1", "4-2", "4-3", "4-14", "4-15"],
 			["5-4"]
 		],
 		leo: [
 			["1-3", "1-4"],
-			["2-2", "2-7", "2-8", "2-9", "2-10", "2-11"],
+			["2-2", "2-8", "2-9", "2-10", "2-11"],
 			["3-11", "3-12", "3-13"],
-			["4-2", "4-12", "4-13"],
-			["5-1", "5-3", "5-14"]
+			["4-12", "4-13"],
+			["5-1", "5-2", "5-3", "5-14"]
 		],
 		ricardo: [
 			["1-1", "1-2"],
-			["2-5", "2-6", "2-7", "2-16"],
+			["2-5", "2-6", "2-16"],
 			["3-2", "3-7", "3-8", "3-9", "3-10", "3-14"],
 			["4-9", "4-10", "4-11", "4-16", "4-17", "4-18"],
 			["5-11", "5-12"]
@@ -784,6 +791,8 @@ $(document).ready(function() {
 			imageSet,
 			imageList = [];
 
+		MBP.Analytics.track('UI', 'Shuffle');
+
 		for (var f=0; f<frames.length; f++) {
 			frame = frames[f];
 			randomImageIndex = Math.floor(Math.random() * frame.images.length) + 1;
@@ -806,6 +815,8 @@ $(document).ready(function() {
 			randomImageIndex,
 			imageSet,
 			imageList = [];
+
+		MBP.Analytics.track('UI', 'Person', name);
 
 		for (var f=0; f<frames.length; f++) {
 			randomImageIndex = Math.floor(Math.random() * person[f].length);
@@ -899,6 +910,8 @@ $(document).ready(function() {
 			state = $.bbq.getState(),
 			images,
 			imageSet;
+
+		MBP.Analytics.track('UI', 'Frame', frameIndex);
 
 		if (next >= imagesInFrame.length) next = 0;
 

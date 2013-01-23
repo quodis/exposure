@@ -213,6 +213,8 @@ $(document).ready(function() {
 			imageSet,
 			imageList = [];
 
+		MBP.Analytics.track('UI', 'Shuffle');
+
 		for (var f=0; f<frames.length; f++) {
 			frame = frames[f];
 			randomImageIndex = Math.floor(Math.random() * frame.images.length) + 1;
@@ -235,6 +237,8 @@ $(document).ready(function() {
 			randomImageIndex,
 			imageSet,
 			imageList = [];
+
+		MBP.Analytics.track('UI', 'Person', name);
 
 		for (var f=0; f<frames.length; f++) {
 			randomImageIndex = Math.floor(Math.random() * person[f].length);
@@ -328,6 +332,8 @@ $(document).ready(function() {
 			state = $.bbq.getState(),
 			images,
 			imageSet;
+
+		MBP.Analytics.track('UI', 'Frame', frameIndex);
 
 		if (next >= imagesInFrame.length) next = 0;
 

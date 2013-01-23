@@ -82,7 +82,7 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    background: #b49a78 url(../../img/layout/loader.gif) no-repeat center center;
+    background: #b49a78 url(../../img/layout/loader-frame.gif) no-repeat center center;
     z-index: 11;
     -webkit-transition: opacity .5s ease;
     -moz-transition: opacity .5s ease;
@@ -432,7 +432,7 @@ textarea[contenteditable] {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .loader {
-        background-image: url(../../img/layout/loader@2x.gif);
+        background-image: url(../../img/layout/loader-frame@2x.gif);
         background-size: 32px auto;
     }
 

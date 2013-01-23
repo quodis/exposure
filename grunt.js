@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     min: {
       js: {
         src: ['<banner:meta.banner>', '<config:concat.js.dest>'],
-        dest: JS_SRC_DIR + 'app.min.js'
+        dest: JS_BUILD_DIR + 'app.min.js'
       }
     },
     cssmin: {
