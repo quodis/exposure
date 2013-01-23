@@ -373,7 +373,7 @@ textarea[contenteditable] {
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 699px) {
     body {
         margin: 10px 0;
     }
@@ -427,6 +427,22 @@ textarea[contenteditable] {
         background: transparent;
         margin: 0;
         border: none;
+    }
+}
+
+@media only screen and (min-width: 411px) and (max-width: 699px) {
+    .toolbar .logo {
+        width: auto;
+    }
+    .toolbar .logo .btn {
+        margin: 0;
+        float: left;
+    }
+
+    .toolbar {
+        width: 390px;
+        padding: 0;
+        margin: 10px auto 0 auto;
     }
 }
 
