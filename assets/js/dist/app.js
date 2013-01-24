@@ -960,10 +960,11 @@ $(document).ready(function() {
 
 		url = url.replace(/\$\$URL/g, encodeURIComponent(window.location.href));
 
-		console.log(url);
-
 		window.open(url, $(this).attr('title'), opts);
 
 		return false;
 	});
+
+    // Solve a weird Safari bug
+	$(window).trigger('resize');
 });
