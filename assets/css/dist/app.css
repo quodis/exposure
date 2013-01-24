@@ -222,33 +222,39 @@ textarea {
     margin-top: 10px;
 }
 
+.toolbar .person, #shuffle, .toolbar .logo a, .share .btn {
+    background: transparent url(../../img/layout/sprite.png) no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
 .toolbar .logo a {
-    background: transparent url(../../img/layout/logo.png) no-repeat;
+    background-position: 0 -260px;
     display: block;
 }
 
 .toolbar [data-person="bruno"] {
-    background-image: url(../../img/layout/bruno.png);
+    background-position: 0 0;
 }
 
 .toolbar [data-person="jan"] {
-    background-image: url(../../img/layout/jan.png);
+    background-position: 0 -65px;
 }
 
 .toolbar [data-person="leihla"] {
-    background-image: url(../../img/layout/leihla.png);
+    background-position: 0 -130px;
 }
 
 .toolbar [data-person="leo"] {
-    background-image: url(../../img/layout/leo.png);
+    background-position: 0 -195px;
 }
 
 .toolbar [data-person="ricardo"] {
-    background-image: url(../../img/layout/ricardo.png);
+    background-position: 0 -325px;
 }
 
 .toolbar #shuffle {
-    background-image: url(../../img/layout/shuffle.png);
+    background-position: 0 -512px;
 }
 
 .toolbar .share {
@@ -262,13 +268,13 @@ textarea {
 }
 
 .toolbar .share .facebook {
-    background: transparent url(../../img/layout/share_white.png) no-repeat;
+    background-position: 0 -451px;
     width: 90px;
     height: 36px;
 }
 
 .toolbar .share .twitter {
-    background: transparent url(../../img/layout/tweet_white.png) no-repeat;
+    background-position: 0 -638px;
     width: 130px;
     height: 36px;
 }
@@ -460,11 +466,11 @@ textarea[contenteditable] {
     }
 
     .toolbar .share .facebook {
-        background-image: url(../../img/layout/share.png);
+        background-position: 0 -390px;
     }
 
     .toolbar .share .twitter {
-        background-image: url(../../img/layout/tweet.png);
+        background-position: 0 -577px;
     }
 }
 
@@ -501,55 +507,59 @@ textarea[contenteditable] {
     .toolbar .btn {
         background-size: auto 40px;
     }
+    
+    .toolbar .person, #shuffle, .toolbar .logo a, .share .btn {
+        background: transparent url(../../img/layout/sprite@2x.png) no-repeat;
+        background-size: 130px auto;
+        width: 40px;
+        height: 40px;
+    }
 
     .toolbar .logo a {
-        background-image: url(../../img/layout/logo@2x.png);
+        background-position: 0 -260px;
+        display: block;
     }
 
     .toolbar [data-person="bruno"] {
-        background-image: url(../../img/layout/bruno@2x.png);
+        background-position: 0 0;
     }
 
     .toolbar [data-person="jan"] {
-        background-image: url(../../img/layout/jan@2x.png);
+        background-position: 0 -65px;
     }
 
     .toolbar [data-person="leihla"] {
-        background-image: url(../../img/layout/leihla@2x.png);
+        background-position: 0 -130px;
     }
 
     .toolbar [data-person="leo"] {
-        background-image: url(../../img/layout/leo@2x.png);
+        background-position: 0 -195px;
     }
 
     .toolbar [data-person="ricardo"] {
-        background-image: url(../../img/layout/ricardo@2x.png);
+        background-position: 0 -325px;
     }
 
     .toolbar #shuffle {
-        background-image: url(../../img/layout/shuffle@2x.png);
+        background-position: 0 -512px;
     }
 
     .toolbar .share .facebook {
-        background-image: url(../../img/layout/share_white@2x.png);
-        background-size: 90px auto;
+        background-position: 0 -451px;
     }
 
     .toolbar .share .twitter {
-        background-image: url(../../img/layout/tweet_white@2x.png);
-        background-size: 130px auto;
+        background-position: 0 -638px;
     }
 }
 
 @media only screen and (max-width: 699px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 699px) and (min-resolution: 192dpi) {
     .toolbar .share .facebook {
-        background-image: url(../../img/layout/share@2x.png);
-        background-size: 90px auto;
+        background-position: 0 -390px;
     }
 
     .toolbar .share .twitter {
-        background-image: url(../../img/layout/tweet@2x.png);
-        background-size: 130px auto;
+        background-position: 0 -577px;
     }
 }
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */

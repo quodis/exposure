@@ -1,4 +1,4 @@
-/*! Quodis Layers - v1.1.0 - 2013-01-23
+/*! Quodis Layers - v1.1.0 - 2013-01-24
 * http://layers.quodis.com/
 * Copyright (c) 2013 Quodis; Licensed MIT */
 
